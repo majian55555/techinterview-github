@@ -1,3 +1,22 @@
+Overview: This project is a mobile friendly web based GitHub events dashboard. The back-end is based on Node.js and the front-end is based on HTML5, CSS3, Javascripts, jQuery, ajax, AngularJS and Bootstrap.
+
+Instruction:
+1. Download the whole project into your server.
+2. Set your server IP address in scripts/web-server.js line #91. Set your port number in scripts/web-server.js line #10.
+3. In Windows command line, "cd" to this project main folder, then type "node scripts/web-server.js"
+4. In you browser, type http:// your IP address : port number/index.html
+
+Features Implemented:
+1. Simple back-end node.js web server.
+2. Request GitHub events in front-end and store them as Angular variables.
+3. Display events as collapsable panels. Show events type, actor and repository at first, and show event detail when you click the link.
+4. Contain actor's url and avatar image, as well as repository's url and avatar image.
+5. Contain list of actor's performed public events.
+6. Collapsable navigation bar contains functional buttons, like refresh page.
+7. In order to increase GitHub API request rate limit, I use my GitHub credential for each GitHub API requests.
+8. Mobile friendly. Tested both in Android and iOS. Support screen rotation.
+
+
 # Technical Interview Homework: GitHub Dashboard
 
 
