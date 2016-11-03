@@ -1,8 +1,19 @@
 var gdata;
 var repoList = new Array();
 var userList = new Array();
+
+function sleep(numberMillis) { 
+	var now = new Date(); 
+	var exitTime = now.getTime() + numberMillis; 
+	while (true) { 
+		now = new Date(); 
+		if (now.getTime() > exitTime) 
+		return; 
+	} 
+}
 function GetPubEvents()
 {
+	$.ajaxSettings.async = false;
 	var username = 'majian55555', password = '12345ma';
 	$.ajax({
 	    url: 'https://api.github.com/events',
@@ -16,9 +27,11 @@ function GetPubEvents()
 	}, function(err) {
 	    console.log('err', err);
 	});
+	$.ajaxSettings.async = true;
 } 
 function GetSingleInfo(str)
 {
+	$.ajaxSettings.async = false;
 	var username = 'majian55555', password = '12345ma';
 	var result;
 	$.ajax({
@@ -33,21 +46,30 @@ function GetSingleInfo(str)
 	}, function(err) {
 	    console.log('err', err);
 	});
+	$.ajaxSettings.async = true;
 	return result;
 }
 
-$.ajaxSettings.async = false;
+//$.ajaxSettings.async = false;
 GetPubEvents();
+gdata.splice(10,20);
+//$.ajaxSettings.async = true;
+//$.ajaxSettings.async = true;
+//sleep(2000);
+//console.log("first");
+//console.log(gdata.length);
 for(i=0; i < gdata.length; i++)
 {
 	userList[i] = GetSingleInfo(gdata[i].actor.url);
 	userList[i].eventList = GetSingleInfo("https://api.github.com/users/"+gdata[i].actor.login+"/events/public");
 	repoList[i] = GetSingleInfo(gdata[i].repo.url);
 }
-//console.log(gdata);
+//sleep(5000);
+//console.log("second");
+//console.log(userList);
 //console.log(userList);
 //console.log(repoList);
-$.ajaxSettings.async = true;
+//$.ajaxSettings.async = true;
 
 var app = angular.module('myApp',[]);
 /*app.factory('getSingleData',function($http,$q){
